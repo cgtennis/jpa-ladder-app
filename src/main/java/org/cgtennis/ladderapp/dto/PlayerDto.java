@@ -5,7 +5,7 @@ public record PlayerDto(
         String lastName,
         String email,
         String phoneNumber,
-        String ratingId,
+        String ratingCode,
         String gender,
         String location,
         String availability) {

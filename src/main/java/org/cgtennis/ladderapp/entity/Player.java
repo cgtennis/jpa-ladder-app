@@ -38,7 +38,7 @@ public class Player {
     private String gender;
 
     @ManyToOne
-    @JoinColumn(name = "rating_id", referencedColumnName = "rating_id")
+    @JoinColumn(name = "rating_code", referencedColumnName = "rating_code")
     private Rating rating;
 
     @Column(name = "location")
@@ -55,7 +55,8 @@ public class Player {
     public Player() {
     }
 
-    public Player(String firstName, String lastName, String phoneNumber, String email, String gender, Rating rating, String location, String availability) {
+    public Player(int playerId, String firstName, String lastName, String phoneNumber, String email, String gender, Rating rating, String location, String availability) {
+        this.playerId = playerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;

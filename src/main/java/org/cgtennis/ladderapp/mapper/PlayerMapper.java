@@ -4,25 +4,27 @@ import org.cgtennis.ladderapp.dto.PlayerDto;
 import org.cgtennis.ladderapp.entity.Player;
 import org.cgtennis.ladderapp.entity.Rating;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface PlayerMapper {
 
     PlayerMapper INSTANCE = Mappers.getMapper(PlayerMapper.class);
 
-    PlayerDto mapToDto(Player player);
+    @Mapping(target="ratingCode",source = "rating.ratingCode")
+    PlayerDto toDto(Player player);
 
-    Player mapFromDto(PlayerDto playerDto);
+    @Mapping(target = "rating.ratingCode", source = "ratingCode")
+    Player toEntity(PlayerDto playerDto);
 
-    List<PlayerDto> mapToDto(List<Player> players);
+    @Mapping(target="ratingCode",source = "rating.ratingCode")
+    List<PlayerDto> toDto(List<Player> players);
 
-    List<Player> mapFromDto (List<PlayerDto> playerDtos);
+    List<Player> toEntity (List<PlayerDto> playerDtos);
 
 
-    default String mapRatingToRatingId(Rating rating) {
-        return (rating!=null)?rating.getRatingId() : null;
-    }
+
 }
