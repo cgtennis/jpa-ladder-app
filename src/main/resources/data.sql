@@ -1,17 +1,18 @@
+-- noinspection SqlNoDataSourceInspectionForFile
 
 Insert seasons (season_name, start_date, end_date) values ('South Jersey Tennis Ladder 2023','2023-04-01','2023-09-30');
 
-INSERT ratings (rating,  rating_num) VALUES ('3.0',3.0);
-INSERT ratings (rating,  rating_num) VALUES ('3.5',3.5);
-INSERT ratings (rating,  rating_num) VALUES ('4.0',4.0);
-INSERT ratings (rating,  rating_num) VALUES ('4.5',4.5);
-INSERT ratings (rating,  rating_num) VALUES ('5.0',5.0);
+INSERT ratings (rating_id,  rating_num) VALUES ('3.0',3.0);
+INSERT ratings (rating_id,  rating_num) VALUES ('3.5',3.5);
+INSERT ratings (rating_id,  rating_num) VALUES ('4.0',4.0);
+INSERT ratings (rating_id,  rating_num) VALUES ('4.5',4.5);
+INSERT ratings (rating_id,  rating_num) VALUES ('5.0',5.0);
 
 
 
-INSERT players ( first_name, last_name, email, phone_number, rating, availability,location) VALUES ('Cheng','Wang','cg.tennis@gmail.com','(856)298-1112','4.5','Weekdays after 5pm, Weekend anytime','Atkinson');
-INSERT players ( first_name, last_name, email, phone_number, rating, availability,location) VALUES ('Jeff','Tistan','jefftistan@gmail.com','(610)573-1109','3.5','Weekdays after 5pm','Atkinson');
-INSERT players ( first_name, last_name, email, phone_number, rating, availability,location) VALUES ('John','Gundaker','jgundaker@hotmail.com','(609)707-5957','4.0','Weekdays after 530pm','Atkinson Anywhere');
+INSERT players ( first_name, last_name, email, phone_number, rating_id, gender, availability,location) VALUES ('Cheng','Wang','cg.tennis@gmail.com','(856)298-1112','4.5','M','Weekdays after 5pm, Weekend anytime','Atkinson');
+INSERT players ( first_name, last_name, email, phone_number, rating_id, gender, availability,location) VALUES ('Jeff','Tistan','jefftistan@gmail.com','(610)573-1109','3.5','M','Weekdays after 5pm','Atkinson');
+INSERT players ( first_name, last_name, email, phone_number, rating_id, gender, availability,location) VALUES ('John','Gundaker','jgundaker@hotmail.com','(609)707-5957','4.0','M','Weekdays after 530pm','Atkinson Anywhere');
 
 
 INSERT  season_players (season_id, player_id) VALUES (1,1);

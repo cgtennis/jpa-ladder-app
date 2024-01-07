@@ -12,8 +12,8 @@ import java.util.Objects;
 public class Rating {
 
     @Id
-    @Column(name = "rating")
-    private String rating;
+    @Column(name = "rating_id")
+    private String ratingId;
 
     @Column(name = "rating_num",nullable = false)
     private Double ratingNum;
@@ -27,18 +27,18 @@ public class Rating {
     public Rating() {
     }
 
-    public Rating(String rating, Double ratingNum, String description) {
-        this.rating = rating;
+    public Rating(String ratingId, Double ratingNum, String description) {
+        this.ratingId = ratingId;
         this.ratingNum = ratingNum;
         this.description = description;
     }
 
-    public String getRating() {
-        return rating;
+    public String getRatingId() {
+        return ratingId;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
+    public void setRatingId(String rating) {
+        this.ratingId = rating;
     }
 
     public Double getRatingNum() {
@@ -62,12 +62,12 @@ public class Rating {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Rating rating1 = (Rating) o;
-        return Objects.equals(rating, rating1.rating) && Objects.equals(ratingNum, rating1.ratingNum);
+        return Objects.equals(ratingId, rating1.ratingId) && Objects.equals(ratingNum, rating1.ratingNum);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(rating, ratingNum);
+        return Objects.hash(ratingId, ratingNum);
     }
 
     @Override
@@ -76,4 +76,6 @@ public class Rating {
                 "ratingNum=" + ratingNum +
                 '}';
     }
+
+
 }

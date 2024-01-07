@@ -38,7 +38,7 @@ public class Player {
     private String gender;
 
     @ManyToOne
-    @JoinColumn(name = "rating", referencedColumnName = "rating")
+    @JoinColumn(name = "rating_id", referencedColumnName = "rating_id")
     private Rating rating;
 
     @Column(name = "location")
@@ -55,16 +55,16 @@ public class Player {
     public Player() {
     }
 
-    public Player(String firstName, String lastName, String phoneNumber, String email, Rating rating, String location, String availability) {
+    public Player(String firstName, String lastName, String phoneNumber, String email, String gender, Rating rating, String location, String availability) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.gender = gender;
         this.rating = rating;
         this.location = location;
         this.availability = availability;
     }
-
 
     public int getPlayerId() {
         return playerId;
@@ -128,6 +128,14 @@ public class Player {
 
     public void setAvailability(String availability) {
         this.availability = availability;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     @Override

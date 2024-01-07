@@ -1,4 +1,12 @@
 package org.cgtennis.ladderapp.dto;
 
-public record PlayerDto(String displayName, String email, String phone, String rating, String location, String availability) {
+public record PlayerDto(
+        String firstName,
+        String lastName,
+        String email,
+        String phoneNumber,
+        String ratingId,
+        String gender,
+        String location,
+        String availability) {
 }

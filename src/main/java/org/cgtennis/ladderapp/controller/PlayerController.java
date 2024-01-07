@@ -1,7 +1,7 @@
 package org.cgtennis.ladderapp.controller;
 
-import org.cgtennis.ladderapp.entity.Player;
-import org.cgtennis.ladderapp.repository.PlayerRepository;
+import org.cgtennis.ladderapp.dto.PlayerDto;
+import org.cgtennis.ladderapp.service.PlayerService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,14 +10,17 @@ import java.util.List;
 @RestController
 public class PlayerController {
 
-    private final PlayerRepository playerRepository;
+    private final PlayerService playerService;
 
-    public PlayerController(PlayerRepository playerRepository) {
-        this.playerRepository = playerRepository;
+    public PlayerController(PlayerService playerService) {
+        this.playerService = playerService;
     }
 
+
     @GetMapping("api/players")
-    public List<Player> getPlayers(){
-        return  playerRepository.findAll();
+    public List<PlayerDto> getPlayers(){
+
+
+        return  playerService.findAll();
     }
 }
