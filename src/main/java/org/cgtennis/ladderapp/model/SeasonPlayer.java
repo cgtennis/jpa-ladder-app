@@ -8,7 +8,7 @@ import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="season_player")
+@Table(name="season_players")
 public class SeasonPlayer {
 
     @EmbeddedId

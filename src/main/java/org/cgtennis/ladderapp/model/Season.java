@@ -8,11 +8,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name="season")
+@Table(name="seasons")
 public class Season {
 
     @Id
@@ -27,10 +27,10 @@ public class Season {
     private String description;
 
     @Column(name="start_date")
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
     @Column(name="end_date")
-    private LocalDateTime endDate;
+    private LocalDate endDate;
 
     @Column(name="is_active")
     boolean isActive;
@@ -38,7 +38,7 @@ public class Season {
     public Season() {
     }
 
-    public Season(int seasonID, String seasonName, String description, LocalDateTime startDate, LocalDateTime endDate, boolean isActive) {
+    public Season(int seasonID, String seasonName, String description, LocalDate startDate, LocalDate endDate, boolean isActive) {
         this.seasonId = seasonID;
         this.seasonName = seasonName;
         this.description = description;
@@ -71,19 +71,19 @@ public class Season {
         this.description = description;
     }
 
-    public LocalDateTime getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

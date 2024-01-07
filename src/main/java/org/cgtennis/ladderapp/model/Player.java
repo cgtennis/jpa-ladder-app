@@ -13,7 +13,7 @@ import jakarta.persistence.Column;
 import java.util.Objects;
 
 @Entity
-@Table(name = "player")
+@Table(name = "players")
 public class Player {
 
     @Id
