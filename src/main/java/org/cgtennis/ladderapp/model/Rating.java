@@ -1,18 +1,21 @@
 package org.cgtennis.ladderapp.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 
 import java.util.Objects;
 
 @Entity
-@Table(name = "tblRating")
+@Table(name = "rating")
 public class Rating {
 
     @Id
     @Column(name = "rating")
     private String rating;
 
-    @Column(name = "ratingNum",nullable = false)
+    @Column(name = "rating_num",nullable = false)
     private Double ratingNum;
 
     @Column(name="description")

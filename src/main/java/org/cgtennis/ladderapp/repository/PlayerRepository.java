@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface PlayerRepository extends JpaRepository<Player,Integer> {
 
-    
+
 }
