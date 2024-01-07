@@ -1,6 +1,6 @@
 package org.cgtennis.ladderapp.controller;
 
-import org.cgtennis.ladderapp.model.Player;
+import org.cgtennis.ladderapp.entity.Player;
 import org.cgtennis.ladderapp.repository.PlayerRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

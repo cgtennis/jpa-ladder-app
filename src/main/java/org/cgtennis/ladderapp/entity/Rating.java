@@ -1,4 +1,4 @@
-package org.cgtennis.ladderapp.model;
+package org.cgtennis.ladderapp.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

@@ -1,4 +1,4 @@
-package org.cgtennis.ladderapp.model;
+package org.cgtennis.ladderapp.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +8,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
+import jakarta.persistence.Transient;
 
 
 import java.util.Objects;
@@ -33,6 +34,9 @@ public class Player {
     @Column(name="email",nullable = false)
     private String email;
 
+    @Column(name="gender",length = 10)
+    private String gender;
+
     @ManyToOne
     @JoinColumn(name = "rating", referencedColumnName = "rating")
     private Rating rating;
@@ -42,6 +46,11 @@ public class Player {
 
     @Column(name="availability")
     private String availability;
+
+    @Transient
+    public String getDisplayName(){
+        return firstName + " " + lastName;
+    }
 
     public Player() {
     }
