@@ -2,6 +2,7 @@ package org.cgtennis.ladderapp.service;
 
 import org.cgtennis.ladderapp.dto.PlayerDto;
 import org.cgtennis.ladderapp.entity.Player;
+import org.cgtennis.ladderapp.exception.PlayerNotFoundException;
 import org.cgtennis.ladderapp.mapper.PlayerMapper;
 import org.cgtennis.ladderapp.repository.PlayerRepository;
 import org.springframework.stereotype.Service;
@@ -26,10 +27,8 @@ public class PlayerService {
 
     public PlayerDto findById(int id) throws RuntimeException {
         Optional<Player> player = playerRepository.findById(id);
-        if(player.isPresent())
-            return playerMapper.toDto(player.get());
-        else
-            throw new RuntimeException("Not Found");
+        return playerMapper.toDto(player.orElseThrow(()-> new PlayerNotFoundException("Player not found with id: " + id)));
+
 
     }
 

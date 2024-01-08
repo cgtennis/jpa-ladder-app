@@ -2,6 +2,7 @@ package org.cgtennis.ladderapp.controller;
 
 import org.cgtennis.ladderapp.dto.PlayerDto;
 import org.cgtennis.ladderapp.service.PlayerService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,15 +22,16 @@ public class PlayerController {
 
 
     @GetMapping("api/players")
-    public List<PlayerDto> getPlayers(){
+    public ResponseEntity<List<PlayerDto>> getPlayers(){
 
-        return  playerService.findAll();
+        return ResponseEntity.ok().header("my-tennis-header","welcome tennis fan!")
+                .body(playerService.findAll());
     }
 
     @GetMapping("api/players/{id}")
-    public PlayerDto getPlayers(@PathVariable("id") int id){
-
-        return  playerService.findById(id);
+    public ResponseEntity<PlayerDto> getPlayers(@PathVariable("id") int id){
+        PlayerDto playerDto = playerService.findById(id);
+        return ResponseEntity.ok(playerDto);
     }
 
 

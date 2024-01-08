@@ -1,10 +1,23 @@
-###
+### Home controller
+GET http://localhost:8080
+
+### Home Tennis Controller
+GET http://localhost:8080/tennis
+
+### Home Pickleball Controller
+GET http://localhost:8080/pickleball
+
+### all players
 GET http://localhost:8080/api/players
 Accept: application/json
 
 
-###
+### Find player by a valid player iD
 GET http://localhost:8080/api/players/1
+Accept: application/json
+
+### Find a player by Invalid player ID
+GET http://localhost:8080/api/players/999
 Accept: application/json
 
 ###
