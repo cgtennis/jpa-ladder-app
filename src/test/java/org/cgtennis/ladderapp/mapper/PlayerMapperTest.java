@@ -13,7 +13,7 @@ public class PlayerMapperTest {
 
     @Test
     public void testEntityToDto() {
-        Player player = new Player(1,"John","Smith","615-286-4437","jsmith@example.com","M",new Rating("4.0",4.0,null),null,null);
+        Player player = new Player(1,"John","Smith","615-286-4437","jsmith@example.com","M",new Rating("4.0"),null,null);
         PlayerDto playerDto = playerMapper.toDto(player);
         assertEquals(player.getFirstName(),playerDto.firstName());
         assertEquals(player.getLastName(),playerDto.lastName());

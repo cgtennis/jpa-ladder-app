@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.Transient;
+import jakarta.validation.constraints.Pattern;
+import org.cgtennis.ladderapp.util.MyRegexPatterns;
 
 
 import java.util.Objects;
@@ -34,7 +36,7 @@ public class Player {
     @Column(name="email",nullable = false)
     private String email;
 
-    @Column(name="gender",length = 10)
+    @Pattern(regexp = MyRegexPatterns.REGEX_GENDER, message = "Invalid gender")
     private String gender;
 
     @ManyToOne

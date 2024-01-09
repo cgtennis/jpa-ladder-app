@@ -8,6 +8,7 @@ import jakarta.persistence.Transient;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Pattern;
+import org.cgtennis.ladderapp.util.MyRegexPatterns;
 
 import java.util.Objects;
 
@@ -16,12 +17,12 @@ import java.util.Objects;
 public class Rating {
 
     @Id
-    @Pattern(regexp = "^(2\\.0|2\\.5|3\\.0|3\\.5|4\\.0|4\\.5|5\\.0|5\\.5)$", message = "Invalid rating")
+    @Pattern(regexp = MyRegexPatterns.REGEX_RATING, message = "Invalid rating")
     @Column(name = "rating_code")
     private String ratingCode;
 
-    @DecimalMin(value = "2.5", message = "Rating number must be greater or equal to 2.5")
-    @DecimalMax(value = "5.5", message = "Rating number must be less than or equal to 5.5")
+    //@DecimalMin(value = "2.5", message = "Rating number must be greater or equal to 2.5")
+    //@DecimalMax(value = "5.5", message = "Rating number must be less than or equal to 5.5")
     @Column(name = "rating_num",nullable = false)
     private double ratingNum;
 
@@ -34,19 +35,19 @@ public class Rating {
     public Rating() {
     }
 
-
-    public double getRatingNum() {
-        if (ratingNum == 0.0 && ratingCode != null)
-               return Double.parseDouble(ratingCode);
-        else
-            return ratingNum;
+    public Rating(String ratingCode) {
+        this.ratingCode = ratingCode;
     }
 
+    public double getRatingNum() {
+        double ratingNum = 0;
+        try {
+            ratingNum = Double.parseDouble(ratingCode);
+        }
+        catch(Exception e) {}
 
-    public Rating(String ratingCode, double ratingNum, String description) {
-        this.ratingCode = ratingCode;
-        this.ratingNum = ratingNum;
-        this.description = description;
+        return  ratingNum;
+
     }
 
     public String getRatingCode() {
