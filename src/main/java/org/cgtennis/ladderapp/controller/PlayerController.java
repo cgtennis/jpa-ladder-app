@@ -1,17 +1,17 @@
 package org.cgtennis.ladderapp.controller;
 
+import jakarta.validation.Valid;
 import org.cgtennis.ladderapp.dto.PlayerDto;
+import org.cgtennis.ladderapp.exception.PlayerNotFoundException;
 import org.cgtennis.ladderapp.service.PlayerService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/players")
 public class PlayerController {
 
     private final PlayerService playerService;
@@ -21,23 +21,21 @@ public class PlayerController {
     }
 
 
-    @GetMapping("api/players")
+    @GetMapping
     public ResponseEntity<List<PlayerDto>> getPlayers(){
 
-        return ResponseEntity.ok().header("my-tennis-header","welcome tennis fan!")
-                .body(playerService.findAll());
+        return ResponseEntity.ok(playerService.findAll());
     }
 
-    @GetMapping("api/players/{id}")
-    public ResponseEntity<PlayerDto> getPlayers(@PathVariable("id") int id){
-        PlayerDto playerDto = playerService.findById(id);
-        return ResponseEntity.ok(playerDto);
+    @GetMapping("/{id}")
+    public ResponseEntity<PlayerDto> getPlayers(@PathVariable("id") int id)  throws PlayerNotFoundException {
+        return ResponseEntity.ok(playerService.findById(id));
     }
 
 
-    @PostMapping("api/players")
-    public void save(@RequestBody PlayerDto playerDto){
-        playerService.save(playerDto);
+    @PostMapping
+    public ResponseEntity<PlayerDto> save(@RequestBody @Valid PlayerDto playerDto){
+        return new ResponseEntity<>(playerService.save(playerDto), HttpStatus.CREATED);
     }
 
 

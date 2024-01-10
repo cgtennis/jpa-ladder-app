@@ -1,19 +1,18 @@
 package org.cgtennis.ladderapp.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import org.cgtennis.ladderapp.util.MyRegexPatterns;
 
 public record PlayerDto(
 
+        int playerId,
+
         @Size(max=50)
-        @NotNull
+        @NotBlank
         String firstName,
 
         @Size(max=50)
-        @NotNull
+        @NotBlank
         String lastName,
 
         @Size(max=255)

@@ -13,14 +13,14 @@ Accept: application/json
 
 
 ### Find player by a valid player iD
-GET http://localhost:8080/api/players/1
+GET http://localhost:8080/api/players/2
 Accept: application/json
 
 ### Find a player by Invalid player ID
 GET http://localhost:8080/api/players/999
 Accept: application/json
 
-###
+### Good player post
 POST http://localhost:8080/api/players
 Content-Type: application/json
 
@@ -29,9 +29,24 @@ Content-Type: application/json
   "lastName": "Doe",
   "phoneNumber": "+1234567890",
   "email": "john.doe@example.com",
-  "gender": "Male",
+  "gender": "male",
   "ratingCode": "3.5",
   "location": "Atkinson",
   "availability": ""
+}
+
+### Bad player post
+POST http://localhost:8080/api/players
+Content-Type: application/json
+
+{
+"firstName": "",
+"lastName": "",
+"phoneNumber": "+1234567890",
+"email": "@example.com",
+"gender": "Male1",
+"ratingCode": "3.75",
+"location": "Atkinson",
+"availability": ""
 }
 

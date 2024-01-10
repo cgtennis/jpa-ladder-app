@@ -25,15 +25,17 @@ public class PlayerService {
         return playerMapper.toDto(playerRepository.findAll());
     }
 
-    public PlayerDto findById(int id) throws RuntimeException {
+    public PlayerDto findById(int id) throws PlayerNotFoundException {
         Optional<Player> player = playerRepository.findById(id);
-        return playerMapper.toDto(player.orElseThrow(()-> new PlayerNotFoundException("Player not found with id: " + id)));
+        return playerMapper.toDto(player.orElseThrow(
+                ()-> new PlayerNotFoundException("Player not found with id: " + id)));
 
 
     }
 
-    public void save(PlayerDto playerDto){
+    public PlayerDto save(PlayerDto playerDto){
         Player player = playerMapper.toEntity(playerDto);
-        playerRepository.save(player);
+        Player savedPlayer = playerRepository.save(player);
+        return playerMapper.toDto(savedPlayer);
     }
 }
